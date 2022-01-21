@@ -106,6 +106,21 @@ prueba <- ezANOVA(data = datos_evaluacion, dv = evaluacion, within = division,
 
 print(summary(prueba$aov))
 
+cat("Resultado de la prueba de esfericidad de Mauchly :\n\n")
+print(prueba[["Mauchly's Test for Sphericity"]])
+
+# El valor p obtenido en esta prueba es mayor al nivel de significancia de 0.05,
+# con un valor de p = 0.1117474 de lo que se desprende que los datos  si cumplen
+# con la condicion de esfericidad (hipótesis nula de la prueba de Mauchly).
+
+
+# Conclusión de prueba ANOVA:
+# Con respecto al resultado obtenido y al obtener un p = <2e-16, inferior al
+# nivel de significación, se rechaza la hipótesis nula a favor de la alternativa, por lo tanto,
+# se concluye con un 95% de confianza que existen diferencias significativas en el promedio de 
+# la evaluación realizada por el general entre las distintas divisiones.  
+
+
 #PREGUNTA 2
 
 #PREGUNTA 3
