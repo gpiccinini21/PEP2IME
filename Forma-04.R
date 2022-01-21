@@ -120,6 +120,35 @@ print(prueba[["Mauchly's Test for Sphericity"]])
 # se concluye con un 95% de confianza que existen diferencias significativas en el promedio de 
 # la evaluación realizada por el general entre las distintas divisiones.  
 
+# Procedimiento post-hoc HSD de Tukey.
+
+mixto <- lme(evaluacion ~ division , data = datos_evaluacion , random = ~1|instancia )
+medias <- emmeans(mixto , "division")
+tukey <- pairs ( medias , adjust = "tukey")
+
+cat("\n\nPrueba HSD de Tukey\n\n")
+print(tukey)
+
+# Conclusión post-hoc
+# Se utiliza esta prueba para buscar las diferencias significativas
+# Con un nivel de significancia de 0.05 los pares de divisiones con diferencias
+# significativas son:
+
+# contrast                    estimate    SE  df t.ratio p.value
+# Cavetrooper - Recontrooper    9.1597 0.697 693  13.145  <.0001
+# Cavetrooper - Shoretrooper   -9.8296 0.697 693 -14.107  <.0001
+# Flametrooper - Recontrooper  10.1714 0.697 693  14.597  <.0001
+# Flametrooper - Shoretrooper  -8.8179 0.697 693 -12.655  <.0001
+# Lavatrooper - Recontrooper    8.5408 0.697 693  12.257  <.0001
+# Lavatrooper - Shoretrooper  -10.4485 0.697 693 -14.995  <.0001
+# Recontrooper - Sandtrooper   -9.2941 0.697 693 -13.338  <.0001
+# Recontrooper - Shoretrooper -18.9893 0.697 693 -27.252  <.0001
+# Recontrooper - Snowtrooper   -9.4907 0.697 693 -13.620  <.0001
+# Recontrooper - Spacetrooper  -9.5782 0.697 693 -13.746  <.0001
+# Sandtrooper - Shoretrooper   -9.6952 0.697 693 -13.914  <.0001
+# Shoretrooper - Snowtrooper    9.4986 0.697 693  13.632  <.0001
+# Shoretrooper - Spacetrooper   9.4111 0.697 693  13.506  <.0001
+
 
 #PREGUNTA 2
 
