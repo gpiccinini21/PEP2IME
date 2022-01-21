@@ -37,6 +37,10 @@ if (!require(pROC)){
   install.packages("pROC", dependencies = TRUE )
   require (pROC)
 }
+
+# Se obtienen los datos del ejercicio
+datos <- read.csv(file.choose(), head = TRUE, sep=";", encoding = "UTF-8")
+
 #PREGUNTA 1
 
 
