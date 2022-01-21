@@ -1,5 +1,46 @@
 #Forma-04
 
+#LIBRERÍAS
+if (!require(ggpubr) ) {
+  install.packages("ggpubr", dependencies = TRUE )
+  require (ggpubr)
+}
+if (!require(tidyverse) ) {
+  install.packages("tidyverse", dependencies = TRUE )
+  require (tidyverse)
+}
+if (!require(dplyr) ) {
+  install.packages("dplyr", dependencies = TRUE )
+  require (dplyr)
+}
+if (!require(ez) ) {
+  install.packages("ez", dependencies = TRUE )
+  require (ez)
+}
+if (!require(emmeans) ) {
+  install.packages("emmeans", dependencies = TRUE )
+  require (emmeans)
+}
+if (!require(nlme) ) {
+  install.packages("nlme", dependencies = TRUE )
+  require (nlme)
+}
+if (!require(corrplot)){
+  install.packages("corrplot", dependencies = TRUE )
+  require (corrplot)
+}
+if (!require(caret)){
+  install.packages("caret", dependencies = TRUE )
+  require (caret)
+}
+if (!require(pROC)){
+  install.packages("pROC", dependencies = TRUE )
+  require (pROC)
+}
+#PREGUNTA 1
+
+
+#PREGUNTA 2
 
 #PREGUNTA 3
 
