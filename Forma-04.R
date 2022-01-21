@@ -152,6 +152,26 @@ print(tukey)
 
 #PREGUNTA 2
 
+datos2 <- datos
+set.seed(892)
+# Muestra de 400 datos
+datos2<- datos2[sample(nrow(datos2), 400),]
+
+# Separar conjuntos de entrenamiento y prueba.
+n <- nrow(datos2)
+n_entrenamiento <- floor(0.8 * n)
+muestra <- sample.int(n = n , size = n_entrenamiento, replace = FALSE )
+entrenamiento <- datos2[muestra, ]
+prueba <- datos2[-muestra , ]
+
+# Ajustar modelo nulo .
+nulo <- glm(as.factor(datos2$es_clon) ~ 1, family = binomial(link = "logit"), data = entrenamiento)
+
+# Ajustar modelo completo .
+cat ("\n\n")
+# completo <- glm(as.factor(datos2$es_clon) ~ ., family = binomial(link ="logit"), data = entrenamiento)
+
+
 #PREGUNTA 3
 
 # Proponga un ejemplo novedoso (no mencionado en clase ni que aparezca en las 
