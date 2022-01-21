@@ -1,6 +1,6 @@
 #Forma-04
 
-#LIBRER�AS
+#LIBRERíAS
 if (!require(ggpubr) ) {
   install.packages("ggpubr", dependencies = TRUE )
   require (ggpubr)
@@ -76,11 +76,11 @@ datos_evaluacion <- datos_evaluacion %>% pivot_longer(c("Cavetrooper", "Snowtroo
 
 datos_evaluacion[["division"]] <- factor(datos_evaluacion[["division"]])
 
-# Se utiliza la prueba de anova con muestras correlacionadas, puesto que el que evalua es el mismo instructor para cada uno
+# Se utiliza la prueba de anova con muestras correlacionadas, puesto que el que evalúa es el mismo instructor para cada uno
 # de los reclutas de las distintas divisiones.
 # Se verifican las condiciones para utilizar ANOVA:
 # - Se puede suponer que las muestras son obtenidas de manera aleatoria e independiente.
-# - La escala con la que se mide la evaluacion del general tiene las propiedades de una escala de intervalos iguales.
+# - La escala con la que se mide la evaluación del general tiene las propiedades de una escala de intervalos iguales.
 # - Se utiliza la función de R ezANOVA() que incluye una prueba para verificar la condición de: 
 #   la prueba de esfericidad de Mauchly.
 # - Se puede suponer razonablemente que la población de origen sigue una distribución
@@ -111,7 +111,7 @@ print(prueba[["Mauchly's Test for Sphericity"]])
 
 # El valor p obtenido en esta prueba es mayor al nivel de significancia de 0.05,
 # con un valor de p = 0.1117474 de lo que se desprende que los datos  si cumplen
-# con la condicion de esfericidad (hipótesis nula de la prueba de Mauchly).
+# con la condición de esfericidad (hipótesis nula de la prueba de Mauchly).
 
 
 # Conclusión de prueba ANOVA:
@@ -159,21 +159,21 @@ print(tukey)
 #expectativas de los chilenos para el nuevo gobierno, necesite utilizar una 
 #prueba de los rangos con signo de Wilcoxon debido a problemas con la escala de
 #la variable dependiente en estudio.
-#Indiqu� cu�les ser�an las variables involucradas en su ejemplo (con sus 
-#respectivos niveles) y las hip�tesis nula y alternativa a contrastar.
+#Indique cuáles serían las variables involucradas en su ejemplo (con sus 
+#respectivos niveles) y las hipótesis nula y alternativa a contrastar.
 
 
 #Se realiza una encuesta a personas que viven en 2 grupos distintos de comunas.
 #Estos dos grupos son: comunas del barrio bajo y comunas del barrio alto.
 #En esta encuesta se busca evaluar las propuestas mas relevantes del plan del
 #nuevo gobierno, con notas del 1 al 7 para cada propuesta, calculando el
-#promedio simple entre estas notas. La valoracion final por cada persona
+#promedio simple entre estas notas. La valoración final por cada persona
 #corresponde a este promedio.
 
 
-#Variables: Valoracion del nuevo plan de gobierno (promedio de calificacion
+#Variables: Valoración del nuevo plan de gobierno (promedio de calificación
 #de propuestas). Esta es una variable ordinal.
 
-#HIP�TESIS
-#H0: No hay diferencias en la valoracion al plan de gobierno (mismas distribuciones)
-#HA: Hay diferencias en la valoracion al plan de gobierno (distintas distribuciones)
+#HIPÓTESIS
+#H0: No hay diferencias en la valoración al plan de gobierno (mismas distribuciones)
+#HA: Hay diferencias en la valoración al plan de gobierno (distintas distribuciones)
