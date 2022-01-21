@@ -70,7 +70,41 @@ Recontrooper <- as.double(gsub(",", ".", Recontrooper$eval_general))
 
 datos_evaluacion <- data.frame(instancia, Cavetrooper, Snowtrooper, Lavatrooper, Shoretrooper, Spacetrooper, Sandtrooper, Flametrooper, Recontrooper)
 
+#Llevar data frame a formato largo .
+datos_evaluacion <- datos_evaluacion %>% pivot_longer(c("Cavetrooper", "Snowtrooper", "Lavatrooper", "Shoretrooper", "Spacetrooper", "Sandtrooper", "Flametrooper", "Recontrooper"),
+                                                      names_to = "division", values_to = "evaluacion")
 
+datos_evaluacion[["division"]] <- factor(datos_evaluacion[["division"]])
+
+# Se utiliza la prueba de anova con muestras correlacionadas, puesto que el que evalua es el mismo instructor para cada uno
+# de los reclutas de las distintas divisiones.
+# Se verifican las condiciones para utilizar ANOVA:
+# - Se puede suponer que las muestras son obtenidas de manera aleatoria e independiente.
+# - La escala con la que se mide la evaluacion del general tiene las propiedades de una escala de intervalos iguales.
+# - Se utiliza la función de R ezANOVA() que incluye una prueba para verificar la condición de: 
+#   la prueba de esfericidad de Mauchly.
+# - Se puede suponer razonablemente que la población de origen sigue una distribución
+#   normal, la cual se puede observar por medio del gráfico Q-Q, se debe tener en cuenta
+#   que casi no existen valores que pueden ser atípicos, por lo que se utiliza un nivel de significación 
+#   bastante más exigente, igual a alfa = 0,05.
+
+
+# Nivel de significación.
+alfa <- 0.05
+
+# Comprobación de normalidad .
+g <- ggqqplot(datos_evaluacion , x = "evaluacion", y = "division", color = "division")
+g <- g + facet_wrap(~ division )
+g <- g + rremove("x.ticks") + rremove("x.text")
+g <- g + rremove("y.ticks") + rremove("y.text")
+g <- g + rremove("axis.title")
+print(g)
+
+
+prueba <- ezANOVA(data = datos_evaluacion, dv = evaluacion, within = division,
+                  wid = instancia , return_aov = TRUE )
+
+print(summary(prueba$aov))
 
 #PREGUNTA 2
 
