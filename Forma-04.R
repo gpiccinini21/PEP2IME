@@ -43,6 +43,34 @@ datos <- read.csv(file.choose(), head = TRUE, sep=";", encoding = "UTF-8")
 
 #PREGUNTA 1
 
+# Hipótesis a contrastar:
+# H0: No existen diferencias significativas en el promedio de la evaluación realizada por el general entre las distintas divisiones
+# HA: Existen diferencias significativas en el promedio de la evaluación realizada por el general entre las distintas divisiones
+
+Cavetrooper <- filter(datos, division == 'Cavetrooper')
+Snowtrooper <- filter(datos, division == 'Snowtrooper')
+Lavatrooper <- filter(datos, division == 'Lavatrooper')
+Shoretrooper <- filter(datos, division == 'Shoretrooper')
+Spacetrooper <- filter(datos, division == 'Spacetrooper')
+Sandtrooper <- filter(datos, division == 'Sandtrooper')
+Flametrooper <- filter(datos, division == 'Flametrooper')
+Recontrooper <- filter(datos, division == 'Recontrooper')
+
+instancia <- factor(1:nrow(Cavetrooper))
+
+Cavetrooper <- as.double(gsub(",", ".", Cavetrooper$eval_general))
+Snowtrooper <- as.double(gsub(",", ".", Snowtrooper$eval_general))
+Lavatrooper <- as.double(gsub(",", ".", Lavatrooper$eval_general))
+Shoretrooper <- as.double(gsub(",", ".", Shoretrooper$eval_general))
+Spacetrooper <- as.double(gsub(",", ".", Spacetrooper$eval_general))
+Sandtrooper <- as.double(gsub(",", ".", Sandtrooper$eval_general))
+Flametrooper <- as.double(gsub(",", ".", Flametrooper$eval_general))
+Recontrooper <- as.double(gsub(",", ".", Recontrooper$eval_general))
+
+
+datos_evaluacion <- data.frame(instancia, Cavetrooper, Snowtrooper, Lavatrooper, Shoretrooper, Spacetrooper, Sandtrooper, Flametrooper, Recontrooper)
+
+
 
 #PREGUNTA 2
 
